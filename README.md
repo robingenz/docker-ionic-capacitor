@@ -12,12 +12,16 @@ Pull from Docker Registry:
 ### Build image
 
 Build from GitHub:  
-`docker build -t https://github.com/robingenz/docker-ionic-capacitor github.com/robingenz/docker-ionic-capacitor`
+```
+docker build -t robingenz/docker-ionic-capacitor github.com/robingenz/docker-ionic-capacitor
+```
 
 ### Run image
 
 Run the docker image:  
-`docker run -it github.com/robingenz/docker-ionic-capacitor bash`
+```
+docker run -it robingenz/docker-ionic-capacitor bash
+```
 
 ## Questions / Issues
 

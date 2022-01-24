@@ -16,6 +16,15 @@ Build from GitHub:
 docker build -t robingenz/ionic-capacitor github.com/robingenz/docker-ionic-capacitor
 ```
 
+Available build arguments:  
+
+- JAVA_VERSION
+- NODEJS_VERSION
+- ANDROID_SDK_VERSION
+- ANDROID_BUILD_TOOLS_VERSION
+- ANDROID_PLATFORMS_VERSION
+- GRADLE_VERSION
+
 ### Run image
 
 Run the docker image:  

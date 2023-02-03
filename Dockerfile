@@ -2,16 +2,16 @@ FROM ubuntu:21.04
 
 LABEL MAINTAINER="Robin Genz <mail@robingenz.dev>"
 
-ARG JAVA_VERSION=8
+ARG JAVA_VERSION=11
 ARG NODEJS_VERSION=16
 # See https://developer.android.com/studio/index.html#command-tools
-ARG ANDROID_SDK_VERSION=7583922
+ARG ANDROID_SDK_VERSION=9477386
 # See https://androidsdkmanager.azurewebsites.net/Buildtools
-ARG ANDROID_BUILD_TOOLS_VERSION=30.1.0
+ARG ANDROID_BUILD_TOOLS_VERSION=33.0.0
 # See https://developer.android.com/studio/releases/platforms
-ARG ANDROID_PLATFORMS_VERSION=31
+ARG ANDROID_PLATFORMS_VERSION=32
 # See https://gradle.org/releases/
-ARG GRADLE_VERSION=6.9.2
+ARG GRADLE_VERSION=7.4.2
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8

@@ -12,6 +12,10 @@ ARG ANDROID_BUILD_TOOLS_VERSION=33.0.0
 ARG ANDROID_PLATFORMS_VERSION=32
 # See https://gradle.org/releases/
 ARG GRADLE_VERSION=7.4.2
+# See https://www.npmjs.com/package/@ionic/cli
+ARG IONIC_VERSION=6.20.8
+# See https://www.npmjs.com/package/@capacitor/cli
+ARG CAPACITOR_VERSION=4.6.3
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8
@@ -59,6 +63,10 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION}.x | bash - \
     && apt-get update -q && apt-get install -qy nodejs
 ENV NPM_CONFIG_PREFIX=${HOME}/.npm-global
 ENV PATH=$PATH:${HOME}/.npm-global/bin
+
+# Install Ionic CLI and Capacitor CLI
+RUN npm install -g @ionic/cli@${IONIC_VERSION} \
+    && npm install -g @capacitor/cli@${CAPACITOR_VERSION}
 
 # Clean up
 RUN apt-get autoremove -y \

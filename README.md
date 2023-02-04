@@ -18,12 +18,14 @@ docker build -t robingenz/ionic-capacitor github.com/robingenz/docker-ionic-capa
 
 Available build arguments:  
 
-- JAVA_VERSION
-- NODEJS_VERSION
-- ANDROID_SDK_VERSION
-- ANDROID_BUILD_TOOLS_VERSION
-- ANDROID_PLATFORMS_VERSION
-- GRADLE_VERSION
+- JAVA_VERSION (Default: `11`)
+- NODEJS_VERSION (Default: `16`)
+- ANDROID_SDK_VERSION (Default: `9477386`)
+- ANDROID_BUILD_TOOLS_VERSION (Default: `33.0.0`)
+- ANDROID_PLATFORMS_VERSION (Default: `32`)
+- GRADLE_VERSION (Default: `7.4.2`)
+- IONIC_VERSION (Default: `6.20.8`)
+- CAPACITOR_VERSION (Default: `4.6.3`)
 
 ### Run image
 

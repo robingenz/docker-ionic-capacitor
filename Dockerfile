@@ -45,7 +45,7 @@ RUN locale-gen en_US.UTF-8 && update-locale
 # Install Gradle
 ENV GRADLE_HOME=/opt/gradle
 RUN mkdir $GRADLE_HOME \
-    && curl -sL https://downloads.gradle-dn.com/distributions/gradle-${GRADLE_VERSION}-bin.zip -o gradle-${GRADLE_VERSION}-bin.zip \
+    && curl -sL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -o gradle-${GRADLE_VERSION}-bin.zip \
     && unzip -d $GRADLE_HOME gradle-${GRADLE_VERSION}-bin.zip
 ENV PATH=$PATH:/opt/gradle/gradle-${GRADLE_VERSION}/bin
 

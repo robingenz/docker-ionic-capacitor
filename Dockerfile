@@ -2,8 +2,8 @@ FROM ubuntu:22.04
 
 LABEL MAINTAINER="Robin Genz <mail@robingenz.dev>"
 
-ARG JAVA_VERSION=11
-ARG NODEJS_VERSION=16
+ARG JAVA_VERSION=17
+ARG NODEJS_VERSION=20
 # See https://developer.android.com/studio/index.html#command-tools
 ARG ANDROID_SDK_VERSION=9477386
 # See https://androidsdkmanager.azurewebsites.net/Buildtools
@@ -13,9 +13,9 @@ ARG ANDROID_PLATFORMS_VERSION=32
 # See https://gradle.org/releases/
 ARG GRADLE_VERSION=7.4.2
 # See https://www.npmjs.com/package/@ionic/cli
-ARG IONIC_VERSION=6.20.8
+ARG IONIC_VERSION=7.2.0
 # See https://www.npmjs.com/package/@capacitor/cli
-ARG CAPACITOR_VERSION=4.6.3
+ARG CAPACITOR_VERSION=5.6.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8

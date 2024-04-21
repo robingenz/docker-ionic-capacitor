@@ -13,7 +13,7 @@ Pull from Docker Registry:
 
 Build from GitHub:  
 ```
-docker build -t robingenz/ionic-capacitor github.com/robingenz/docker-ionic-capacitor
+docker build -t robingenz/ionic-capacitor github.com/robingenz/docker-ionic-capacitor#main
 ```
 
 Available build arguments:  

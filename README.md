@@ -38,4 +38,4 @@ docker run -it robingenz/ionic-capacitor bash
 
 If you got any questions or problems using the image, please visit my [GitHub Repository](https://github.com/robingenz/docker-ionic-capacitor) and write an issue.
 
-### If build fail on mac m1/m2 with qemu x84_64 error add '"runArgs": ["--platform=linux/amd64"]' to devcontainer.json in vscode.
+If build fail on mac m1/m2 with qemu x84_64 error add '"runArgs": ["--platform=linux/amd64"]' to devcontainer.json in vscode.

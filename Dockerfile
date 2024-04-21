@@ -1,8 +1,4 @@
-# use this line for mac M1/M2
-FROM --platform=linux/x86_64 ubuntu:22.04
-
-# or use default ubuntu
-# FROM ubuntu:22.04
+FROM ubuntu:22.04
 
 LABEL MAINTAINER="Robin Genz <mail@robingenz.dev>"
 
@@ -10,10 +6,8 @@ ARG JAVA_VERSION=17
 ARG NODEJS_VERSION=20
 # See https://developer.android.com/studio/index.html#command-tools
 ARG ANDROID_SDK_VERSION=11076708
-# 9477386
 # See https://developer.android.com/tools/releases/build-tools
-ARG ANDROID_BUILD_TOOLS_VERSION=34.0.0 
-# 33.0.0
+ARG ANDROID_BUILD_TOOLS_VERSION=34.0.0
 # See https://developer.android.com/studio/releases/platforms
 ARG ANDROID_PLATFORMS_VERSION=34
 # See https://gradle.org/releases/
@@ -21,28 +15,21 @@ ARG GRADLE_VERSION=8.2.1
 # See https://www.npmjs.com/package/@ionic/cli
 ARG IONIC_VERSION=7.2.0
 # See https://www.npmjs.com/package/@capacitor/cli
-ARG CAPACITOR_VERSION=next
-
-ARG USERNAME=vscode
-ARG USER_UID=1001
-ARG USER_GID=$USER_UID
-ARG HOME=/home/${USERNAME}
-ARG WORKDIR=$HOME
+ARG CAPACITOR_VERSION=6.0.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8
 
 WORKDIR /tmp
 
-SHELL ["/bin/bash", "-l", "-c"] 
+RUN apt-get update -q
 
 # General packages
-RUN apt-get update -q && apt-get install -qy \
+RUN apt-get install -qy \
     apt-utils \
     locales \
     gnupg2 \
     build-essential \
-    ca-certificates \
     curl \
     usbutils \
     git \
@@ -54,15 +41,6 @@ RUN apt-get update -q && apt-get install -qy \
 
 # Set locale
 RUN locale-gen en_US.UTF-8 && update-locale
-
-# Add user
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd -s /bin/bash --create-home --uid $USER_UID --gid $USER_GID -m $USERNAME
-
-# [Optional] Add sudo support for the non-root user
-RUN apt-get install -qy sudo \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Install Gradle
 ENV GRADLE_HOME=/opt/gradle
@@ -90,22 +68,10 @@ ENV PATH=$PATH:${HOME}/.npm-global/bin
 RUN npm install -g @ionic/cli@${IONIC_VERSION} \
     && npm install -g @capacitor/cli@${CAPACITOR_VERSION}
 
-# Copy adbkey
-RUN mkdir -p -m 0750 /root/.android
-COPY adbkey/adbkey /root/.android/
-COPY adbkey/adbkey.pub /root/.android/
-
 # Clean up
 RUN apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/*
 
-# Switch back to dialog for any ad-hoc use of apt-get
-ENV DEBIAN_FRONTEND=dialog
-
-WORKDIR $WORKDIR
-
-USER $USERNAME
-
-ENTRYPOINT ["/bin/bash", "-l", "-c"]
+WORKDIR /workdir

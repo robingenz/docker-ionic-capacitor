@@ -59,10 +59,12 @@ RUN curl -sL https://dl.google.com/android/repository/commandlinetools-linux-${A
 ENV PATH=$PATH:${ANDROID_HOME}/cmdline-tools:${ANDROID_HOME}/platform-tools
 
 # Install NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION}.x | bash - \
+ENV NODEJS_HOME=/opt/nodejs
+RUN mkdir $NODEJS_HOME \
+    && curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION}.x | bash - \
     && apt-get update -q && apt-get install -qy nodejs
-ENV NPM_CONFIG_PREFIX=${HOME}/.npm-global
-ENV PATH=$PATH:${HOME}/.npm-global/bin
+ENV NPM_CONFIG_PREFIX=${NODEJS_HOME}/.npm-global
+ENV PATH=$PATH:${NODEJS_HOME}/.npm-global/bin
 
 # Install Ionic CLI and Capacitor CLI
 RUN npm install -g @ionic/cli@${IONIC_VERSION} \
